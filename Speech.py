@@ -14,16 +14,12 @@
 # https://betterprogramming.pub/an-introduction-to-pyttsx3-a-text-to-speech-converter-for-python-4a7e1ce825c3
 # https://pyttsx3.readthedocs.io/en/latest/engine.html#pyttsx3.voice.Voice
 #
-# Updates:
-# 1) it'll keep prompting the user dor more text to speech input until it's exited as opposed to entering option
-# one each time
 # ------------------------------------------------------------------------------------------------------------------
 
 import collections
 import pyttsx3
-# from pyttsx3 import Engine
 
-
+#my class that holds all the info on the voice and it's different options
 class VoiceEngine:
 
     voices: collections 
@@ -92,8 +88,6 @@ class VoiceEngine:
     def speaking_rate(self):
         # getting details of current speaking rate
         rate = self.engine.getProperty('rate')
-        # printing current voice rate
-        # self.engine.say('My current speaking rate is ' + str(rate))
         print(rate)
         choice: int = int(input("Would you like to change the voice rate?: \n1 = yes\n2 = no\n"))
         if choice != 1:
@@ -133,7 +127,7 @@ class VoiceEngine:
                     self.engine.setProperty('voice', self.voices[0].id)
                 else:
                     self.engine.setProperty('voice', self.voices[1].id)
-        print(f'print gender is: {gender}')
+            print(f'print gender is: {gender}')
         return
 
     def save_voice(self):
@@ -146,6 +140,7 @@ class VoiceEngine:
 
 
 def main():
+    #Initialising voice settings
     voice_engine = VoiceEngine(rate=200, vol=1, voice=1)
 
     while True:
@@ -183,7 +178,7 @@ def main():
 
 def voice_properties(voice_engine):
     print("\n"
-          "            ---- voice properties Menu ----\n"
+          "            ---- Voice Properties Menu ----\n"
           "            1.Speaking rate\n"
           "            2.Volume\n"
           "            3.Gender\n"
@@ -202,11 +197,10 @@ def voice_properties(voice_engine):
     else:
         return
 
-
+#for adding specific pronounciations for nouns like names
 def key_words():
     pass 
 
 if __name__ == "__main__":
     main()
-
 
